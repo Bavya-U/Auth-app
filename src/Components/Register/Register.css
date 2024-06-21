@@ -28,7 +28,7 @@ h2 {
     background-color: #f8f9fa;
     padding: 20px;
     padding: 25px 15px;
-    margin-bottom: 1.3rem;
+    margin-bottom: 2px;
 }
 
 .form-control:focus {
@@ -77,4 +77,9 @@ h2 {
     cursor: pointer;
     font-size: 18px;
     user-select: none;
+}
+.error{
+    color: red;
+    padding: 0;
+    margin: 0;
 }

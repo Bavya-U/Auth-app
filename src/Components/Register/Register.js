@@ -1,45 +1,47 @@
-import React, { useState } from "react";
+import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
 const Register = () => {
-  const [formData, setFormData] = useState({
-    userId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    userName: "",
-    email: "",
-    mobileNo: "",
-    password: "",
-    confirmPassword: "",
-    userRole: "",
-  });
-
-  const { userName, email, mobileNo, password, confirmPassword, userRole } = formData;
   const navigate = useNavigate();
-
-  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-    } else {
+  const formik = useFormik({
+    initialValues: {
+      userId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      userName: "",
+      email: "",
+      mobileNo: "",
+      password: "",
+      confirmPassword: "",
+      userRole: "",
+    },
+    validationSchema: Yup.object({
+      userName: Yup.string().required("Enter UserName"),
+      email: Yup.string().email("Invalid email address").required("Enter Email"),
+      mobileNo: Yup.string()
+        .matches(/^[0-9]{10}$/, "Invalid mobile number")
+        .required("Enter Mobile Number"),
+      password: Yup.string()
+        .min(8, "Password must be at least 8 characters")
+        .required("Enter Password"),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], "Passwords must match")
+        .required("Enter ConfirmPassWord"),
+      userRole: Yup.string().required("Select UserRole"),
+    }),
+    onSubmit: async (values) => {
       try {
-        await axios.post("http://localhost:8080/api/auth/user/register", formData);
-        alert("Registration successful! Redirecting to login...");
+        await axios.post("http://localhost:8080/api/auth/user/register", values);
+        alert("Registration successful!");
         navigate("/login");
       } catch (err) {
         console.error(err.response.data);
         alert("Registration failed.");
       }
-    }
-  };
-
-  const togglePassword = (inputId) => {
-    const input = document.getElementById(inputId);
-    const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-    input.setAttribute('type', type);
-  };
+    },
+  });
 
   return (
     <div className="container">
@@ -48,7 +50,7 @@ const Register = () => {
           <div className="card border-0 shadow">
             <h2 className="card-title text-center fw-bold">Register</h2>
             <div className="card-body py-md-4">
-              <form _lpchecked="1" onSubmit={onSubmit}>
+              <form onSubmit={formik.handleSubmit}>
                 <div className="form-group">
                   <input
                     type="text"
@@ -56,9 +58,13 @@ const Register = () => {
                     id="name"
                     placeholder="Name"
                     name="userName"
-                    value={userName}
-                    onChange={onChange}
+                    value={formik.values.userName} 
+                    onChange={formik.handleChange} 
+                    onBlur={formik.handleBlur}
                   />
+                  {formik.touched.userName && formik.errors.userName ? (
+                    <div className="error">{formik.errors.userName}</div>
+                  ) : null}
                 </div>
                 <div className="form-group">
                   <input
@@ -66,10 +72,14 @@ const Register = () => {
                     className="form-control"
                     id="email"
                     name="email"
-                    value={email}
-                    onChange={onChange}
                     placeholder="Email"
+                    value={formik.values.email} 
+                    onChange={formik.handleChange} 
+                    onBlur={formik.handleBlur}
                   />
+                  {formik.touched.email && formik.errors.email ? (
+                    <div className="error">{formik.errors.email}</div>
+                  ) : null}
                 </div>
                 <div className="form-group">
                   <input
@@ -77,65 +87,85 @@ const Register = () => {
                     className="form-control"
                     id="mobileNo"
                     name="mobileNo"
-                    value={mobileNo}
-                    onChange={onChange}
                     placeholder="Mobile Number"
-                    required
+                    value={formik.values.mobileNo} 
+                    onChange={formik.handleChange} 
+                    onBlur={formik.handleBlur}
                   />
+                  {formik.touched.mobileNo && formik.errors.mobileNo ? (
+                    <div className="error">{formik.errors.mobileNo}</div>
+                  ) : null}
                 </div>
-                <div className="form-group">
+                <div className="form-group position-relative">
                   <input
-                    type="password"
+                    type={formik.values.showPassword ? "text" : "password"}
                     className="form-control"
                     id="password"
                     name="password"
-                    value={password}
-                    onChange={onChange}
                     placeholder="Password"
+                    value={formik.values.password} 
+                    onChange={formik.handleChange} 
+                    onBlur={formik.handleBlur}
                   />
                   <span
                     className="toggle-password"
-                    onClick={() => togglePassword('password')}
+                    onClick={() =>
+                      formik.setFieldValue('showPassword', !formik.values.showPassword)
+                    }
+                    style={{ position: 'absolute', right: '10px', top: '19px', cursor: 'pointer' }}
                   >
-                    &#128065;
+                    {formik.values.showPassword ? '🙈' : '👁️'}
                   </span>
+                  {formik.touched.password && formik.errors.password ? (
+                    <div className="error">{formik.errors.password}</div>
+                  ) : null}
                 </div>
-                <div className="form-group">
+                <div className="form-group position-relative">
                   <input
-                    type="password"
+                    type={formik.values.showConfirmPassword ? "text" : "password"}
                     className="form-control"
                     id="confirm-password"
                     name="confirmPassword"
-                    value={confirmPassword}
-                    onChange={onChange}
                     placeholder="Confirm Password"
+                    value={formik.values.confirmPassword} 
+                    onChange={formik.handleChange} 
+                    onBlur={formik.handleBlur}
                   />
                   <span
                     className="toggle-password"
-                    onClick={() => togglePassword('confirm-password')}
+                    onClick={() =>
+                      formik.setFieldValue('showConfirmPassword', !formik.values.showConfirmPassword)
+                    }
+                    style={{ position: 'absolute', right: '10px', top: '19px', cursor: 'pointer' }}
                   >
-                    &#128065;
+                    {formik.values.showConfirmPassword ? '🙈' : '👁️'}
                   </span>
+                  {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+                    <div className="error">{formik.errors.confirmPassword}</div>
+                  ) : null}
                 </div>
                 <div className="form-group">
                   <select
                     className="form-control"
                     id="userRole"
                     name="userRole"
-                    value={userRole}
-                    onChange={onChange}
-                    required
+                    value={formik.values.userRole} 
+                    onChange={formik.handleChange} 
+                    onBlur={formik.handleBlur}
                   >
                     <option value="" disabled>Select Role</option>
                     <option value="USER">User</option>
                     <option value="ADMIN">Admin</option>
                   </select>
+                  {formik.touched.userRole && formik.errors.userRole ? (
+                    <div className="error">{formik.errors.userRole}</div>
+                  ) : null}
                 </div>
                 <div className="d-flex flex-row align-items-center justify-content-between">
                   <a className="login-btn" href="./login">
                     Login
                   </a>
-                  <button className="Register-btn">Create Account</button>
+                  <button className="Register-btn" type="submit">Create Account</button>
                 </div>
               </form>
             </div>

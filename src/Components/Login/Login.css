@@ -132,3 +132,7 @@ body {
   font-size: 18px;
   user-select: none;
 }
+.error{
+  padding: 0%;
+  margin: 0;
+}
