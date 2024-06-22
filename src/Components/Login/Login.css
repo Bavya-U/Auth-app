@@ -93,27 +93,6 @@ body {
     transform: rotate(360deg);
   }
 }
-
-/* a {
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.6);
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  font-size: 12px;
-} */
-
-/* .login {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-} */
-
 .password-container {
   position: relative !important;
 }

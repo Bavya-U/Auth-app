@@ -6,7 +6,6 @@ const Home = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        // Perform any necessary cleanup or state reset here
         navigate('/login');
     };
 
