@@ -7,6 +7,7 @@
 
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Asap:wght@400;700&display=swap');
+
 body {
   background-color: rgb(247, 197, 200) !important;
   font-family: 'Asap', sans-serif;
@@ -53,7 +54,7 @@ body {
   animation: waves 7s infinite;
 }
 
-.login > div input{
+.login>div input {
   font-family: 'Asap', sans-serif;
   display: block;
   border-radius: 5px;
@@ -65,7 +66,8 @@ body {
   margin: 15px -10px;
 }
 
-.login > button {
+.submit {
+  background-color: #d8353d;
   font-family: 'Asap', sans-serif;
   cursor: pointer;
   color: #fff;
@@ -81,18 +83,33 @@ body {
   transition: background-color 300ms;
 }
 
-.login > button:hover {
-  background-color: #d8353d; /* darkened var(--redFire) by 5% */
+.back {
+  background-color: #8c8d8e !important;
+  font-family: 'Asap', sans-serif;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  width: 80px;
+  border: 0;
+  padding: 10px 0;
+  margin-top: 10px;
+  margin-left: -5px;
+  border-radius: 5px;
+  background-color: var(--redFire);
+  transition: background-color 300ms;
 }
 
 @keyframes waves {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 .password-container {
   position: relative !important;
 }
@@ -111,7 +128,8 @@ body {
   font-size: 18px;
   user-select: none;
 }
-.error{
+
+.error {
   padding: 0%;
   margin: 0;
 }

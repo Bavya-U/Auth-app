@@ -5,14 +5,32 @@ import {
   loginSuccess,
   loginFailure,
 } from '../LoginAction/LoginAction';
+import API_URLS from '../../Service/Api';
 
 function* loginUser(action) {
   try {
-    const { userName, password } = action.payload;
-    const response = yield call(axios.post, 'http://localhost:8080/api/auth/user/login', { userName, password });
-    yield put(loginSuccess(response.data)); // Dispatch success action
+    const { userName, password, navigate } = action.payload;
+    const response = yield call(axios.post, API_URLS.LOGIN, { userName, password });
+    const responseBody = response.data.data.body;
+
+    if (responseBody && responseBody.jwt) {
+      localStorage.setItem("token", responseBody.jwt);
+      localStorage.setItem("username", responseBody.userName);
+
+      yield put(loginSuccess(responseBody));
+
+      if (responseBody.role === "USER") {
+        navigate("/usertable");
+      } else if (responseBody.role === "ADMIN") {
+        navigate("/admintable");
+      } else {
+        yield put(loginFailure('Unexpected user role'));
+      }
+    } else {
+      yield put(loginFailure('User not found'));
+    }
   } catch (error) {
-    yield put(loginFailure(error.message)); // Dispatch failure action
+    yield put(loginFailure(error.response?.data?.message || error.message));
   }
 }
 

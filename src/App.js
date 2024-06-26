@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from './Home/HomePage';
 import RegisterForm from './Redux-Saga/Pages/RegisterPage';
 import LoginForm from './Redux-Saga/Pages/LoginPage';
+import UserPage from './Redux-Saga/Pages/UserPage';
+import AdminPage from './Redux-Saga/Pages/AdminPage';
 
 const App = () => {
     return (
@@ -13,11 +15,11 @@ const App = () => {
             <Routes>
                 <Route path="/register" element={<Register/>} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/home" element={<HomePage />} />
-                <Route path="/" element={<RegisterForm />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/registerpage" element={<RegisterForm />} />
                 <Route path="/authlogin" element={<LoginForm />} />
-
-
+                <Route path="/usertable" element={<UserPage/>} />
+                <Route path="/admintable" element={<AdminPage />} />
             </Routes>
         </Router>
     );

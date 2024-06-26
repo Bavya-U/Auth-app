@@ -5,23 +5,24 @@ import {
   registerSuccess,
   registerFailure,
 } from '../Actions/Action';
-
+import API_URLS from '../../Service/Api';
 function* registerUser(action) {
   try {
-    const { userId, userName, email, mobileNo, password,confirmPassword,userRole } = action.payload;
+    const { userId, userName, email, mobileNo, password, confirmPassword, userRole, navigate } = action.payload;
     const userData = {
       userId,
       userName,
       email,
-        mobileNo,
-        confirmPassword,
+      mobileNo,
       password,
+      confirmPassword,
       userRole,
     };
-    const response = yield call(axios.post, 'http://localhost:8080/api/auth/user/register', userData);
-    yield put(registerSuccess(response.data)); // Dispatch success action
+    const response = yield call(axios.post, API_URLS.REGISTER, userData);
+    yield put(registerSuccess(response.data)); 
+    navigate("/authlogin"); 
   } catch (error) {
-    yield put(registerFailure(error.message)); // Dispatch failure action
+    yield put(registerFailure(error.message)); 
   }
 }
 

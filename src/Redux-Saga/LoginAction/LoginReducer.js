@@ -1,4 +1,8 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/authActions';
+import {
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+} from '../LoginAction/LoginAction';
 
 const initialState = {
   user: null,
@@ -12,20 +16,20 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        error: null,
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
-        loading: false,
         user: action.payload,
         error: null,
+        loading: false,
       };
     case LOGIN_FAILURE:
       return {
         ...state,
-        loading: false,
+        user: null,
         error: action.payload,
+        loading: false,
       };
     default:
       return state;
@@ -33,4 +37,3 @@ const authReducer = (state = initialState, action) => {
 };
 
 export default authReducer;
-    
