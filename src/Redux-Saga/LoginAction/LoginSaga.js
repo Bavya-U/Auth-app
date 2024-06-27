@@ -9,13 +9,13 @@ import API_URLS from '../../Service/Api';
 
 function* loginUser(action) {
   try {
-    const { userName, password, navigate } = action.payload;
-    const response = yield call(axios.post, API_URLS.LOGIN, { userName, password });
+    const { email, password, navigate } = action.payload;
+    const response = yield call(axios.post, API_URLS.LOGIN, { email, password });
     const responseBody = response.data.data.body;
 
     if (responseBody && responseBody.jwt) {
       localStorage.setItem("token", responseBody.jwt);
-      localStorage.setItem("username", responseBody.userName);
+      localStorage.setItem("email", responseBody.email);
 
       yield put(loginSuccess(responseBody));
 

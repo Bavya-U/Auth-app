@@ -15,12 +15,12 @@ const LoginForm = () => {
   };
   const formik = useFormik({
     initialValues: {
-      userName: '',
+      email: '',
       password: '',
       showPassword: false,
     },
     validationSchema: Yup.object({
-      userName: Yup.string().required('Username is required'),
+      email: Yup.string().required('email is required'),
       password: Yup.string().required('Password is required'),
     }),
     onSubmit: (values) => {
@@ -32,14 +32,14 @@ const LoginForm = () => {
     <div className="">
       <form className="login" onSubmit={formik.handleSubmit}>
         <TextInput
-          id="username"
-          name="userName"
-          placeholder="Username"
-          value={formik.values.userName}
+          id="email"
+          name="email"
+          placeholder="email"
+          value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          error={formik.errors.userName}
-          touched={formik.touched.userName}
+          error={formik.errors.email}
+          touched={formik.touched.email}
         />
         <TextInput
           id="password"
