@@ -8,6 +8,7 @@ import RegisterForm from './Redux-Saga/Pages/RegisterPage';
 import LoginForm from './Redux-Saga/Pages/LoginPage';
 import UserPage from './Redux-Saga/Pages/UserPage';
 import AdminPage from './Redux-Saga/Pages/AdminPage';
+import AdminTable from './Admin/AdminPages/AdminTable';
 
 const App = () => {
     return (
@@ -20,6 +21,7 @@ const App = () => {
                 <Route path="/authlogin" element={<LoginForm />} />
                 <Route path="/usertable" element={<UserPage/>} />
                 <Route path="/admintable" element={<AdminPage />} />
+                <Route path="/admintables/:useremail" element={< AdminTable/>} />
             </Routes>
         </Router>
     );
