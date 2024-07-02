@@ -1,22 +1,21 @@
-/* Colors */
 :root {
   --greenSeaweed: rgba(2, 128, 144, 1);
   --blueQueen: rgba(69, 105, 144, 1);
   --redFire: rgba(244, 91, 105, 1);
 }
 
-/* Fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Asap:wght@400;700&display=swap');
 
 body {
-  background-color: rgb(247, 197, 200) !important;
+  background-color: rgb(231, 212, 213) !important;
   font-family: 'Asap', sans-serif;
 }
 
 .login {
   overflow: hidden;
   background-color: white;
-  padding: 40px 30px 30px 30px;
+  padding: 35px 30px 30px 30px;
   border-radius: 10px;
   position: absolute;
   top: 50%;
@@ -26,13 +25,15 @@ body {
   transition: transform 300ms, box-shadow 300ms;
   box-shadow: 5px 10px 10px rgba(2, 128, 144, 0.2);
 }
-
+.login-title{
+  color: #d8353d;
+}
 .login::before,
 .login::after {
   content: '';
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: 700px;
+  height: 700px;
   border-top-left-radius: 40%;
   border-top-right-radius: 45%;
   border-bottom-left-radius: 35%;
@@ -48,8 +49,8 @@ body {
 }
 
 .login::after {
-  left: 35%;
-  bottom: -125%;
+  left: -1%;
+  bottom: -130%;
   background-color: rgba(2, 128, 144, 0.2);
   animation: waves 7s infinite;
 }

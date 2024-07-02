@@ -2,3 +2,9 @@
     display: block;
     align-items: center;
 }
+.p-button-primary{
+    border-radius: 9px;
+}
+.p-button-danger{
+    border-radius: 9px; 
+}

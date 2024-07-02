@@ -30,7 +30,9 @@ const LoginForm = () => {
 
   return (
     <div className="">
+      
       <form className="login" onSubmit={formik.handleSubmit}>
+      <h3 className='text-center m-0 p-0 fw-bold login-title'>Login</h3>
         <TextInput
           id="email"
           name="email"

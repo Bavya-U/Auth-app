@@ -40,9 +40,9 @@ const RegisterForm = () => {
       <div className="row justify-content-center">
         <div className="col-md-5">
           <div className="card border-0 shadow">
-            <h2 className="card-title text-center fw-bold">Register</h2>
+            <h2 className="card-title text-center fw-bold">Register Data</h2>
             <div className="card-body py-md-4">
-              <form onSubmit={formik.handleSubmit}>
+              <form onSubmit={formik.handleSubmit} className='reg-form'>
                 <TextInput
                   id="name"
                   name="userName"

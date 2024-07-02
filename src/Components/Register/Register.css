@@ -64,7 +64,6 @@ h2 {
     width: 100%;
     padding: 10px;
     padding-right: 40px;
-    /* Add space for the icon */
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -83,3 +82,4 @@ h2 {
     padding: 0;
     margin: 0;
 }
+
