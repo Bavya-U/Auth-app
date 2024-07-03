@@ -1,0 +1,34 @@
+   .nav-logo{
+    border-radius: 10px;
+   }
+  .nav-tab {
+    background-color: #27304b;
+  }
+  .scrolled {
+    background-color: #27304b;
+    transition: background-color 0.5s ease;
+  }
+  .custom-dropdown .dropdown-toggle {
+    color: white !important;
+  }
+  .nav-sign-btn {
+    border-color: #98cb46 !important;
+    color: #98cb46 !important;
+    width: 100px !important;
+  }
+  .nav-sign-btn:hover {
+    color: #27304b !important;
+    background-color: #98cb46 !important;
+  }
+  
+  @media only screen and (max-width: 425px) {
+    .nav-tab {
+      background-color: #27304b;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+  .navbar-toggler{
+    background:white;
+    border: none;
+  }
+  }

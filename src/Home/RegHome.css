@@ -1,4 +1,4 @@
-/* LandingPage.css */
+/* 
 .landing-page {
     background-image: url('../Asserts/home.jpg');
     background-size: cover;
@@ -25,5 +25,40 @@
   .register-button:hover {
     background-color: #f67a80;
     color: black;
+  }
+   */
+
+
+   .landing-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-image: url('../Asserts/home.jpg'); Update with your image path */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .right-content {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8); /* Optional: adds a semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .register-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: blue; /* Change to your preferred color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .register-button:hover {
+    background-color: darkblue; /* Change to your preferred color */
   }
   

@@ -28,8 +28,8 @@ const UserTable = () => {
         className="p-button p-component p-button-danger"
         onClick={() => handleDeleteClick(rowData.email)}
       >
-        <span className="p-button-icon p-c pi pi-trash"></span>
-        <span className="p-button-label p-c">Delete</span>
+        <span className="p-button-icon p-c pi pi-trash me-1"></span>
+        <span className="p-button-label p-c ms-1">Delete</span>
       </button>
     );
   };
@@ -57,8 +57,8 @@ const UserTable = () => {
             value={users} 
             globalFilter={globalFilter} 
             paginator 
-            rows={5} 
-            className="p-datatable-sm text-center"
+            rows={4} 
+            className="p-datatable-sm text-center shadow-lg"
             emptyMessage="No users found."
           >
             <Column field="userName" className='text-center' header="User Name" sortable></Column>

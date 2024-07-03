@@ -8,3 +8,56 @@
 .p-button-danger{
     border-radius: 9px; 
 }
+
+.containers {
+    background-size: cover;
+    background-position: center;
+    min-height: 85vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cards {
+    background-color: rgba(41, 131, 106, 0.7);
+    color: #fff;
+  }
+  
+  .card-headers img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .reg-form .login-btn {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .login-btn :hover {
+    background-color: #226655;
+    text-decoration: none;
+  }
+  .reg-form .Register-btn {
+    background-color: #0a6d21;
+    border: none;
+    color: #fff;
+  }
+  
+  .reg-form .Register-btn:hover {
+    background-color: #218838;
+  }
+  .hearder-img{
+    background-image: url('./Asserts/register.jpeg'); 
+    height: 25vh;
+    background-size: cover;
+    background-position: center;
+   
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+ 
+  

@@ -170,7 +170,7 @@ const UserTable = () => {
             </div>
           ) : (
             <div className='text-center'>
-              <DataTable value={[formData]}  className='text-center'>
+              <DataTable value={[formData]}  className='text-center shadow-lg'>
                 <Column className='text-center' field="userName" header="User Name" />
                 <Column className='text-center' field="email" header="Email" />
                 <Column className='text-center' field="mobileNo" header="Mobile Number" />
